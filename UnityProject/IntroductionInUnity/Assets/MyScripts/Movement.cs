@@ -22,8 +22,8 @@ namespace EscapeRoom {
         }
 
         private void Update() {
-            _direction.x = Input.GetAxis("Horizontal");
-            _direction.z = Input.GetAxis("Vertical");
+            _direction.z = -Input.GetAxis("Horizontal");
+            _direction.x = Input.GetAxis("Vertical");
 
             _direction.Normalize();
 
