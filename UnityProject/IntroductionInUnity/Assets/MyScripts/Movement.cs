@@ -22,7 +22,7 @@ namespace EscapeRoom {
         }
 
         private void Update() {
-            _direction.z = -Input.GetAxis("Horizontal");
+            _direction.z = -Input.GetAxis("Horizontal"); // <- minus for Black Magic
             _direction.x = Input.GetAxis("Vertical");
 
             _direction.Normalize();
