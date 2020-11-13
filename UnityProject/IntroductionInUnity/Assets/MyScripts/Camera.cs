@@ -10,7 +10,7 @@ namespace EscapeRoom {
         [SerializeField] private Transform target = null;
 
         [SerializeField] private Vector3 offset = Vector3.zero;
-        [SerializeField] private float smoothTime = 5f;
+        [SerializeField] private float smoothTime = 5.0f;
 
         private Vector3 currentVelocity;
 
