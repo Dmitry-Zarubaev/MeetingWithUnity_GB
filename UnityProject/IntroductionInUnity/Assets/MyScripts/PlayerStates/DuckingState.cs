@@ -10,12 +10,14 @@ namespace EscapeRoom {
         private bool _isBelowCeiling;
         private bool _isHoldingCrouch;
 
+        private const string _animationKey = "isCrouching";
+
         #endregion
 
 
         #region ClassLifeCycles
 
-        public DuckingState(Player player, StateMachine stateMachine) : base(player, stateMachine) {}
+        public DuckingState(Player player, StateMachine stateMachine) : base(player, stateMachine, _animationKey) {}
 
         #endregion
 
@@ -35,6 +37,7 @@ namespace EscapeRoom {
             base.Exit();
 
             _player.ColliderSize = _player.NormalColliderHeight;
+            _player.SetAnimatorBool(_animationKey, false);
         }
 
         public override void HandleInput() {
