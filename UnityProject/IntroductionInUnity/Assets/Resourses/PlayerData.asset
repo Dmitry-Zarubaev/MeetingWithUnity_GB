@@ -15,8 +15,8 @@ MonoBehaviour:
   MovementSpeed: 150
   CrouchSpeed: 50
   RunSpeed: 200
-  CrouchColliderHeight: 1
-  NormalColliderHeight: 2
+  CrouchColliderHeight: 1.1
+  NormalColliderHeight: 1.4
   RotationSpeed: 90
   RunRotationSpeed: 60
   CrouchRotationSpeed: 45
