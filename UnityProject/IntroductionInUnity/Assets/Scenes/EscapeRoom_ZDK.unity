@@ -5700,7 +5700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1054885333}
-  offset: {x: -2, y: 6, z: 0}
+  offset: {x: -3, y: 5, z: 0}
   smoothTime: 1
 --- !u!20 &685073988
 Camera:
