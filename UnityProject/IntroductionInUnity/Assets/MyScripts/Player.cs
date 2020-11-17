@@ -7,8 +7,6 @@ namespace EscapeRoom {
 
         #region Fields
 
-        private StateMachine _stateMachine;
-
         public StandingState Standing;
         public DuckingState Ducking;
         public RunningState Running;
@@ -20,11 +18,16 @@ namespace EscapeRoom {
 
         [SerializeField] private float collisionOverlapRadius = 0.1f;
 
+        private Vector3 _movement;
+        private Animator _animator;
+        private Rigidbody _body;
+        private StateMachine _stateMachine;
+
         #endregion
 
 
         #region Properties
-        
+
         public float CollisionOverlapRadius => collisionOverlapRadius;
 
         public float NormalColliderHeight => _playerData.NormalColliderHeight;
@@ -56,12 +59,16 @@ namespace EscapeRoom {
 
 
         #region Methods
+
+        public void SetAnimatorBool(string key, bool value) {
+            _animator.SetBool(key, value);
+        }
     
         public void Move(float speed, float rotationSpeed) {
-            Vector3 targetVelocity = speed * transform.forward * Time.deltaTime;
-            targetVelocity.y = GetComponent<Rigidbody>().velocity.y;
+            _movement = speed * transform.forward * Time.deltaTime;
+            _movement.y = GetComponent<Rigidbody>().velocity.y;
 
-            GetComponent<Rigidbody>().velocity = targetVelocity;
+            GetComponent<Rigidbody>().velocity = _movement;
             GetComponent<Rigidbody>().angularVelocity = rotationSpeed * Vector3.up * Time.deltaTime;
         }
 
@@ -84,6 +91,7 @@ namespace EscapeRoom {
 
         private void Start() {
             _stateMachine = new StateMachine();
+            _animator = GetComponent<Animator>();
 
             Standing = new StandingState(this, _stateMachine);
             Ducking = new DuckingState(this, _stateMachine);
@@ -102,6 +110,10 @@ namespace EscapeRoom {
 
         private void FixedUpdate() {
             _stateMachine.CurrentState.PhysicsUpdate();
+        }
+
+        private void OnAnimatorMove() {
+            _body.MovePosition(_body.position + _movement * _animator.deltaPosition.magnitude);
         }
 
         #endregion
