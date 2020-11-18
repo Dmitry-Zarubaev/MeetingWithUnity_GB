@@ -92,6 +92,7 @@ namespace EscapeRoom {
         private void Start() {
             _stateMachine = new StateMachine();
             _animator = GetComponent<Animator>();
+            _body = GetComponent<Rigidbody>();
 
             Standing = new StandingState(this, _stateMachine);
             Ducking = new DuckingState(this, _stateMachine);
