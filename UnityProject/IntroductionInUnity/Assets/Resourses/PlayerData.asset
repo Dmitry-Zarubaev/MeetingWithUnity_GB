@@ -20,5 +20,5 @@ MonoBehaviour:
   RotationSpeed: 90
   RunRotationSpeed: 60
   CrouchRotationSpeed: 45
-  JumpForce: 5
-  RunJumpForce: 7.5
+  JumpForce: 4
+  RunJumpForce: 5
