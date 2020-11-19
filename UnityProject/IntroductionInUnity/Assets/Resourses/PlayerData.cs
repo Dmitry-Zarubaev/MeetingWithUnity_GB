@@ -5,6 +5,8 @@
 
     #region Fields
 
+    public float MaxHealth = 100.0f;
+
     public float MovementSpeed = 150.0f;
     public float CrouchSpeed = 50.0f;
     public float RunSpeed = 200.0f;
