@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 namespace EscapeRoom {
 
     public class DoorCloser : Door {
