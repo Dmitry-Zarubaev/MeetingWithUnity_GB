@@ -7,10 +7,12 @@ namespace EscapeRoom {
 
         #region Fields
 
-        [SerializeField] private float _damagePerSecond;
+        [SerializeField] private GameData _gameData;
 
         private GameObject _fire;
         private Player _player;
+
+        private const Damagedealers _damageType = Damagedealers.Fire;
 
         #endregion
 
@@ -33,7 +35,7 @@ namespace EscapeRoom {
 
         private void OnTriggerStay(Collider collider) {
             if (collider.CompareTag("Player") && !_player.IsFireExtinguisherEquiped) {
-                _player?.TakeDamage(_damagePerSecond * Time.deltaTime);
+                _player?.TakeDamage(_gameData.fireDamagePerSecond * Time.deltaTime, _damageType);
             }
         }
 

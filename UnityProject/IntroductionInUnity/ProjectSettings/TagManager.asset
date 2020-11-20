@@ -8,6 +8,7 @@ TagManager:
   - UserInterface
   - Pickable
   - Fire
+  - Enemy
   layers:
   - Default
   - TransparentFX

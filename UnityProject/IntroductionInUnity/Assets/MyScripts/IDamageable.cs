@@ -6,7 +6,7 @@ namespace EscapeRoom {
 
         #region Methods
 
-        void TakeDamage(float damage);
+        void TakeDamage(float damage, Damagedealers damageType);
 
         void HealDamage(float heal);
 

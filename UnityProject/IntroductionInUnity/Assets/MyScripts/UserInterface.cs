@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -25,7 +26,9 @@ namespace EscapeRoom {
 
         private void Start() {
             _gameOverLabel = _gameOver.GetComponentInChildren<Text>();
-            _countdownLabel = _countdown.GetComponentInChildren<Text>();
+
+            Text[] texts = _countdown.GetComponentsInChildren<Text>();
+            _countdownLabel = Array.Find<Text>(texts, text => text.name == "CountdownCounter");
         }
 
         #endregion
@@ -45,15 +48,16 @@ namespace EscapeRoom {
             _inventory.text = itemName;
         }
 
-        public void SetActiveCountdown(bool active) {
-            _countdown.SetActive(active);
-        }
-
         public void SetCountdownCounter(int seconds) {
             int _minutes = seconds / 60;
             int _seconds = seconds % 60;
 
-            _countdownLabel.text = _minutes.ToString() + ":" + _seconds.ToString();
+            _countdownLabel.text = _minutes.ToString() + ":" + (_seconds < 10 ? "0" : "") + _seconds.ToString();
+        }
+
+        public void SetActiveCountdown(bool active, int initTime = 0) {
+            _countdown.SetActive(active);
+            SetCountdownCounter(initTime);
         }
 
         public void SetGameOver(bool isWin) {

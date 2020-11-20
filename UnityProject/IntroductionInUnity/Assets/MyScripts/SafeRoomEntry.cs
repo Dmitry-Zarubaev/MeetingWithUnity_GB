@@ -7,7 +7,8 @@ namespace EscapeRoom {
 
         #region Fields
 
-        [SerializeField] private GameObject _userInterface;
+        [SerializeField] private SelfDestractionActivator _selfDestructionActivator;
+
         private UserInterface _uiController;
 
         #endregion
@@ -16,11 +17,13 @@ namespace EscapeRoom {
         #region UnityMethods
 
         private void Start() {
-            _uiController = _userInterface.GetComponent<UserInterface>();
+            _uiController = GameObject.FindGameObjectWithTag("UserInterface").GetComponent<UserInterface>();
         }
 
         private void OnTriggerEnter(Collider collider) {
             if (collider.CompareTag("Player")) {
+                _selfDestructionActivator.DeactivateSelfDestruction();
+                _uiController.SetActiveCountdown(false);
                 _uiController.SetGameOver(true);
             }
         }

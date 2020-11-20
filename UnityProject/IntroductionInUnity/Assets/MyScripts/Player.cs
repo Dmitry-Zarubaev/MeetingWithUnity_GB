@@ -18,7 +18,6 @@ namespace EscapeRoom {
 
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private LayerMask _groundLayer;
-        [SerializeField] private GameObject _userInterface;
         [SerializeField] private GameObject _fireExtinguisher;
         [SerializeField] private float collisionOverlapRadius = 0.1f;
 
@@ -94,7 +93,7 @@ namespace EscapeRoom {
             return Physics.OverlapSphere(point, CollisionOverlapRadius, _groundLayer).Length > 0;
         }
 
-        public void TakeDamage(float damage) {
+        public void TakeDamage(float damage, Damagedealers damageType) {
             _health -= damage;
 
             if (_health <= 0.0f) {
@@ -113,8 +112,10 @@ namespace EscapeRoom {
             }
         }
 
-        private void Die() {
+        public void Die() {
             _uiController.SetGameOver(false);
+            _uiController.SetHealthBar(0.0f);
+            gameObject.SetActive(false);
             Destroy(this);
         }
 
@@ -143,7 +144,7 @@ namespace EscapeRoom {
             _stateMachine = new StateMachine();
             _animator = GetComponent<Animator>();
             _body = GetComponent<Rigidbody>();
-            _uiController = _userInterface.GetComponent<UserInterface>();
+            _uiController = GameObject.FindGameObjectWithTag("UserInterface").GetComponent<UserInterface>();
 
             Standing = new StandingState(this, _stateMachine);
             Ducking = new DuckingState(this, _stateMachine);
@@ -171,7 +172,7 @@ namespace EscapeRoom {
         private void OnTriggerEnter(Collider collider) {
             if (collider.CompareTag("Pickable")) {
                 IPickable pickable;
-                collider.TryGetComponent<IPickable>(out pickable);
+                collider.TryGetComponent(out pickable);
 
                 if (pickable != null) {
                     PickItem(pickable);
