@@ -11,6 +11,7 @@ namespace EscapeRoom {
 
         [SerializeField] private Image _healthBar;
         [SerializeField] private Text _scrapCounter;
+        [SerializeField] private Text _landmineCounter;
         [SerializeField] private Text _inventory;
 
         [SerializeField] private GameObject _countdown;
@@ -42,6 +43,10 @@ namespace EscapeRoom {
 
         public void SetScrapCounter(int scrap) {
             _scrapCounter.text = scrap.ToString();
+        }
+
+        public void SetLandmineCounter(int landmine) {
+            _landmineCounter.text = landmine.ToString();
         }
 
         public void SetInventory(string itemName) {

@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc082789da4a4e798e98908bdae9b9e, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  Scrap: {fileID: 1701379841335242705, guid: 7db4ee3f63dc749f18137e486e71c25b, type: 3}
+  Landmine: {fileID: 1614506784047978164, guid: 217eb67f3c5d645f09459646d08d85f6,
+    type: 3}
+  MaxHealth: 100
   MovementSpeed: 75
   CrouchSpeed: 50
   RunSpeed: 120
   CrouchColliderHeight: 1.1
   NormalColliderHeight: 1.4
-  RotationSpeed: 90
+  RotationSpeed: 120
   RunRotationSpeed: 60
   CrouchRotationSpeed: 45
   JumpForce: 4

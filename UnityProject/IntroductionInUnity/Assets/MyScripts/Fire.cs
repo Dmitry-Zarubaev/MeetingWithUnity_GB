@@ -35,7 +35,7 @@ namespace EscapeRoom {
 
         private void OnTriggerStay(Collider collider) {
             if (collider.CompareTag("Player") && !_player.IsFireExtinguisherEquiped) {
-                _player?.TakeDamage(_gameData.fireDamagePerSecond * Time.deltaTime, _damageType);
+                _player?.TakeDamage(_gameData.FireDamagePerSecond * Time.deltaTime, _damageType);
             }
         }
 

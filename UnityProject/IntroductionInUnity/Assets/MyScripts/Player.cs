@@ -17,8 +17,11 @@ namespace EscapeRoom {
         public bool IsFireExtinguisherEquiped = false;
 
         [SerializeField] private PlayerData _playerData;
+        [SerializeField] private GameData _gameData;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private GameObject _fireExtinguisher;
+        [SerializeField] private Transform _scrapThrowPoint;
+        [SerializeField] private Transform _landmineLayingPoint;
         [SerializeField] private float collisionOverlapRadius = 0.1f;
 
         private Vector3 _movement;
@@ -29,6 +32,7 @@ namespace EscapeRoom {
 
         private float _health;
         private int _scrapCounter = 0;
+        private int _landmineCounter = 0;
 
         #endregion
 
@@ -81,6 +85,25 @@ namespace EscapeRoom {
             GetComponent<Rigidbody>().angularVelocity = rotationSpeed * Vector3.up * Time.deltaTime;
         }
 
+        public void ThrowScrap() {
+            if (_scrapCounter > 0 && !IsFireExtinguisherEquiped) {
+                _scrapCounter--;
+                _uiController.SetScrapCounter(_scrapCounter);
+
+                GameObject scrap = Instantiate(_playerData.Scrap, _scrapThrowPoint.position, _scrapThrowPoint.rotation);
+                Destroy(scrap, _gameData.ScrapLifeTime);
+            }
+        }
+
+        public void LayLandmine() {
+            if (_landmineCounter > 0) {
+                _landmineCounter--;
+                _uiController.SetLandmineCounter(_landmineCounter);
+
+                GameObject landmine = Instantiate(_playerData.Landmine, _landmineLayingPoint.position, _landmineLayingPoint.rotation);
+            }
+        }
+
         public void ResetMoveParams() {
             GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
@@ -127,7 +150,12 @@ namespace EscapeRoom {
                     IsFireExtinguisherEquiped = true;
                     break;
                 case PickableTypes.ScrapPile:
-                    
+                    _scrapCounter += _gameData.ScrapsInPile;
+                    _uiController.SetScrapCounter(_scrapCounter);
+                    break;
+                case PickableTypes.LandminePile:
+                    _landmineCounter += _gameData.LandminesInPile;
+                    _uiController.SetLandmineCounter(_landmineCounter);
                     break;
                 default:
                     break;
@@ -145,6 +173,12 @@ namespace EscapeRoom {
             _animator = GetComponent<Animator>();
             _body = GetComponent<Rigidbody>();
             _uiController = GameObject.FindGameObjectWithTag("UserInterface").GetComponent<UserInterface>();
+
+            _scrapCounter = _gameData.ScrapInitialCount;
+            _uiController.SetScrapCounter(_scrapCounter);
+
+            _landmineCounter = _gameData.LandmineInitialCount;
+            _uiController.SetLandmineCounter(_landmineCounter);
 
             Standing = new StandingState(this, _stateMachine);
             Ducking = new DuckingState(this, _stateMachine);
@@ -183,6 +217,7 @@ namespace EscapeRoom {
                 Fire fire = collider.GetComponent<Fire>();
                 fire?.PutOutFire();
                 _fireExtinguisher.SetActive(false);
+                IsFireExtinguisherEquiped = false;
                 _uiController.SetInventory("-- empty --");
             }
         }

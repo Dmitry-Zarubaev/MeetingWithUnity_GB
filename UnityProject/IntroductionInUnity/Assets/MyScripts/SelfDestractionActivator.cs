@@ -8,12 +8,13 @@ namespace EscapeRoom {
         #region Fields
 
         [SerializeField] private Animator _crazyDoor;
-        [SerializeField] private int _seflDestructionTime = 10;
+        [SerializeField] private GameData _gameData;
 
         private UserInterface _uiController;
         private Player _player;
 
         private float _second = 1.0f;
+        private int _seflDestructionTime;
         private bool _isActive = false;
 
         #endregion
@@ -55,6 +56,7 @@ namespace EscapeRoom {
         #region UnityMethods
 
         private void Start() {
+            _seflDestructionTime = _gameData.SelfDestructionTime;
             _player = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Player>();
             _uiController = GameObject.FindGameObjectWithTag("UserInterface").GetComponent<UserInterface>();
         }

@@ -5,6 +5,9 @@
 
     #region Fields
 
+    public GameObject Scrap;
+    public GameObject Landmine;
+
     public float MaxHealth = 100.0f;
 
     public float MovementSpeed = 150.0f;

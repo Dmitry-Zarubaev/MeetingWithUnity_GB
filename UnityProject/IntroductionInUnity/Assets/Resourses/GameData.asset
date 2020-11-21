@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   ScrapDamage: 10
-  LandmineDamage: 150
+  ScrapLifeTime: 2
+  ScrapInitialSpeed: 10
+  ScrapInitialCount: 5
+  ScrapsInPile: 10
   ZombieMaxHealth: 20
   ZombieStunTime: 4
   ZombieBiteDamage: 25
-  fireDamagePerSecond: 50
-  ScrapsInPile: 10
+  FireDamagePerSecond: 50
+  LandmineDamage: 150
+  LandmineEngagingTime: 2
+  LandminesInPile: 5
+  LandmineInitialCount: 1
+  SelfDestructionTime: 60

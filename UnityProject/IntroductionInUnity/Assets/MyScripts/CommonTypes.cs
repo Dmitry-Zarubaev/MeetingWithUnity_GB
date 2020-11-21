@@ -5,7 +5,8 @@ namespace EscapeRoom {
     public enum PickableTypes {
         None                = 0,
         FireExtinguisher    = 1,
-        ScrapPile           = 2
+        ScrapPile           = 2,
+        LandminePile        = 3
     }
 
     public enum Damagedealers {

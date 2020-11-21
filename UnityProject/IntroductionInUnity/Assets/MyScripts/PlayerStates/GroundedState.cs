@@ -15,6 +15,9 @@ namespace EscapeRoom {
         private float _horizontalInput;
         private float _verticalInput;
 
+        private bool _isThrowingScrap;
+        private bool _isLayingLandmine;
+
         #endregion
 
 
@@ -46,6 +49,9 @@ namespace EscapeRoom {
 
             _verticalInput = Input.GetAxis("Vertical");
             _horizontalInput = Input.GetAxis("Horizontal");
+
+            _isThrowingScrap = Input.GetButtonDown("Fire1");
+            _isLayingLandmine = Input.GetButtonDown("E");
         }
 
         public override void PhysicsUpdate() {
@@ -55,6 +61,14 @@ namespace EscapeRoom {
 
             if (_isMovement) {
                 _player.Move(_verticalInput * _speed, _horizontalInput * _rotationSpeed);
+            }
+
+            if (_isThrowingScrap) {
+                _player.ThrowScrap();
+            }
+
+            if (_isLayingLandmine) {
+                _player.LayLandmine();
             }
 
             _player.SetAnimatorBool(_animationKey, _isMovement);

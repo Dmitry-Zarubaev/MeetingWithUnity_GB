@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1106051790357508405}
   - component: {fileID: 82582546031767800}
-  - component: {fileID: 5323018496190825396}
+  - component: {fileID: 2955263753646695279}
   m_Layer: 0
   m_Name: FireExtinguisher
   m_TagString: Pickable
@@ -205,7 +205,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.65, z: 0.25}
   m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &5323018496190825396
+--- !u!114 &2955263753646695279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,4 +217,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abeda93d01069478ba7896f7ec5dca13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireExtinguisher: {fileID: 7710550967258372996}

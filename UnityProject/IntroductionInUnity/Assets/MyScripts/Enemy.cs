@@ -48,6 +48,7 @@ namespace EscapeRoom {
 
             if (_stunTime <= 0.0f) {
                 _stunTime = _gameData.ZombieStunTime;
+                _navAgent.isStopped = false;
                 _enemyState = EnemyState.Alive;
             }
         }
@@ -68,6 +69,8 @@ namespace EscapeRoom {
                 switch (damageType) {
                     case Damagedealers.Scrap:
                         _enemyState = EnemyState.Stunned;
+                        _navAgent.isStopped = true;
+                        print("#debug. Enemy has been stunned");
                         break;
                     case Damagedealers.Landmine:
                         Die();
@@ -107,7 +110,7 @@ namespace EscapeRoom {
         }
 
         private void OnTriggerEnter(Collider collider) {
-            if (collider.CompareTag("Player")) {
+            if (collider.CompareTag("Player") && _enemyState != EnemyState.Stunned) {
                 Player player = collider.GetComponent<Player>();
                 player.TakeDamage(_gameData.ZombieBiteDamage, Damagedealers.ZombieBite);
             }

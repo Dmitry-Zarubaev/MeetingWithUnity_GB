@@ -3,11 +3,11 @@
 
 namespace EscapeRoom {
 
-    public class FireExtinguisher : MonoBehaviour, IPickable {
+    public class LandminePile : MonoBehaviour, IPickable {
 
         #region Fields
 
-        private const PickableTypes _pickableType = PickableTypes.FireExtinguisher;
+        private const PickableTypes _pickableType = PickableTypes.LandminePile;
 
         #endregion
 
@@ -24,3 +24,4 @@ namespace EscapeRoom {
         #endregion
     }
 }
+
