@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8365962729203200576}
   - component: {fileID: 4320845466655583277}
   - component: {fileID: 2507663095804135887}
-  - component: {fileID: 2211015978213248709}
   m_Layer: 0
   m_Name: PlainWall
   m_TagString: Untagged
@@ -94,22 +93,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2211015978213248709
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974151528341575965}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &4499748536658699678
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +139,6 @@ GameObject:
   - component: {fileID: 4150065031087411975}
   - component: {fileID: 8536743381679787370}
   - component: {fileID: 8017289848533493896}
-  - component: {fileID: 5990134667497516930}
   m_Layer: 0
   m_Name: PlainWall (2)
   m_TagString: Untagged
@@ -238,22 +220,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5990134667497516930
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4614713284230658138}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &6890826988378295530
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +232,6 @@ GameObject:
   - component: {fileID: 2755109796885751735}
   - component: {fileID: 7625571684361075162}
   - component: {fileID: 8135965245970684984}
-  - component: {fileID: 5515458553401285426}
   m_Layer: 0
   m_Name: PlainWall (1)
   m_TagString: Untagged
@@ -348,22 +313,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5515458553401285426
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6890826988378295530}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &8640605893605165147
 GameObject:
   m_ObjectHideFlags: 0

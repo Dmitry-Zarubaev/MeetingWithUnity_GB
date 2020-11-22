@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5603941f5cc8946ddbeae7bbb1d71183, type: 3}
+  m_Name: GameData
+  m_EditorClassIdentifier: 
+  ScrapDamage: 10
+  ScrapLifeTime: 2
+  ScrapInitialSpeed: 10
+  ScrapInitialCount: 5
+  ScrapsInPile: 10
+  ZombieMaxHealth: 20
+  ZombieStunTime: 4
+  ZombieBiteDamage: 25
+  FireDamagePerSecond: 50
+  LandmineDamage: 150
+  LandmineEngagingTime: 2
+  LandminesInPile: 5
+  LandmineInitialCount: 1
+  SelfDestructionTime: 60
