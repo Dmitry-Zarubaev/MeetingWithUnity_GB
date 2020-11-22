@@ -6,6 +6,8 @@ namespace EscapeRoom {
 
     public class MainMenu : MonoBehaviour {
 
+        #region Methods
+
         public void LoadGameScene(int index) {
             SceneManager.LoadScene(index);
         }
@@ -13,5 +15,7 @@ namespace EscapeRoom {
         public void Quit() {
             Application.Quit();
         }
+
+        #endregion
     }
 }
