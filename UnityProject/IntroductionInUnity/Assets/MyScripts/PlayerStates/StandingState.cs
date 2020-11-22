@@ -11,12 +11,14 @@ namespace EscapeRoom {
         private bool _isRunning;
         private bool _isCrouching;
 
+        private const string _animationKey = "isWalking";
+
         #endregion
 
 
         #region ClassLifeCycles
 
-        public StandingState(Player player, StateMachine stateMachine) : base(player, stateMachine) { }
+        public StandingState(Player player, StateMachine stateMachine) : base(player, stateMachine, _animationKey) { }
 
         #endregion
 
@@ -31,6 +33,12 @@ namespace EscapeRoom {
             _isCrouching = false;
             _isJumping = false;
             _isRunning = false;
+        }
+
+        public override void Exit() {
+            base.Exit();
+
+            _player.SetAnimatorBool(_animationKey, false);
         }
 
         public override void HandleInput() {
