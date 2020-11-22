@@ -10,9 +10,12 @@ namespace EscapeRoom {
 
         [SerializeField] private GameData _gameData;
         [SerializeField] private Material _engagedMarker;
+        [SerializeField] private ParticleSystem _explosion;
+        [SerializeField] private GameObject _landmineBody;
 
         private float _engagingTime = 0.0f;
         private bool _isEngaged = false;
+        private bool _isExploded = false;
 
         #endregion
 
@@ -41,12 +44,18 @@ namespace EscapeRoom {
         }
 
         private void Explode() {
-            print("#debug. Landmine has exploded");
-            DestroyImmediate(gameObject);
+            _explosion.Play();
+            _landmineBody.SetActive(false);
+            _isExploded = true;
         }
 
         private void LateUpdate() {
             Engage();
+
+            if (_isExploded && !_explosion.isPlaying) {
+                print("#debug. Landmine has exploded");
+                DestroyImmediate(gameObject);
+            }
         }
 
         private void OnTriggerEnter(Collider collider) {
@@ -58,7 +67,7 @@ namespace EscapeRoom {
 
                     if (player != null) {
                         player.TakeDamage(_gameData.LandmineDamage, Damagedealers.Landmine);
-                        Invoke(nameof(Explode), 0);
+                        Explode();
                     }
                 }
 
@@ -68,7 +77,7 @@ namespace EscapeRoom {
 
                     if (enemy != null) {
                         enemy.TakeDamage(_gameData.LandmineDamage, Damagedealers.Landmine);
-                        Invoke(nameof(Explode), 0);
+                        Explode();
                     }
                 }
             }
